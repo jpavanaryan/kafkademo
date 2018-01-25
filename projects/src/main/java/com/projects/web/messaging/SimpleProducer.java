@@ -11,12 +11,13 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 
 //import ProducerRecord packages
 import org.apache.kafka.clients.producer.ProducerRecord;
- 
+import org.springframework.beans.factory.annotation.Configurable;
 
 import com.projects.domain.Project;
 
 
 //Create java class named “SimpleProducer”
+@Configurable
 public class SimpleProducer
 {
 	public  Producer<String, String> producer;
@@ -37,7 +38,7 @@ public class SimpleProducer
 	      props.put("acks", "all");
 	      
 	      //If the request fails, the producer can automatically retry,
-	      props.put("retries", 0);
+	      props.put("retries", 3);
 	      
 	      //Specify buffer size in config
 	      props.put("batch.size", 16384);
@@ -60,7 +61,7 @@ public class SimpleProducer
 	
 	public void send(Project project)
 	{
-
+		 System.out.println("***************************************************************************************** Before Produce **********************************************************");
          producer.send(new ProducerRecord<String, String>(topicName,"project", "Project with ID:  created"));
          producer.close();  
 	}
