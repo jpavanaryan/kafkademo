@@ -37,11 +37,15 @@ public class SimpleProducer
 	      //Set acknowledgements for producer requests.      
 	      props.put("acks", "all");
 	      
+	      props.put("request.timeout.ms", 30000);
+	      
+	     
 	      //If the request fails, the producer can automatically retry,
 	      props.put("retries", 3);
 	      
 	      //Specify buffer size in config
 	      props.put("batch.size", 16384);
+	      //props.put("batch.size", 0);
 	      
 	      //Reduce the no of requests less than 0   
 	      props.put("linger.ms", 1);
@@ -62,8 +66,9 @@ public class SimpleProducer
 	public void send(Project project)
 	{
 		 System.out.println("***************************************************************************************** Before Produce **********************************************************");
-         producer.send(new ProducerRecord<String, String>(topicName,"project", "Project Created"));
-         //producer.close();  
+         //producer.send(new ProducerRecord<String, String>(topicName,"project", "Project Created"));
+		 producer.send(new ProducerRecord<String, String>(topicName,"project","Project"));
+         producer.close();  
 	}
 	
 }
