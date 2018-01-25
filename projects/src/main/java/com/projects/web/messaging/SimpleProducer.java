@@ -14,6 +14,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 
 import com.projects.domain.Project;
 
+
 //Create java class named “SimpleProducer”
 public class SimpleProducer
 {
