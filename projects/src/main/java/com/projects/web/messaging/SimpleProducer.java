@@ -11,6 +11,7 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 
 //import ProducerRecord packages
 import org.apache.kafka.clients.producer.ProducerRecord;
+ 
 
 import com.projects.domain.Project;
 
@@ -47,10 +48,11 @@ public class SimpleProducer
 	      //The buffer.memory controls the total amount of memory available to the producer for buffering.   
 	      props.put("buffer.memory", 33554432);
 	      
-	      props.put("key.serializer","org.apache.kafka.common.serializa-tion.StringSerializer");
+	      props.put("key.serializer","org.apache.kafka.common.serialization.StringSerializer");
 	         
-	      props.put("value.serializer","org.apache.kafka.common.serializa-tion.StringSerializer");
+	      props.put("value.serializer","org.apache.kafka.common.serialization.StringSerializer");
 	      
+	      //Thread.currentThread().setContextClassLoader(null);
 	      producer = new KafkaProducer<String, String>(props);
 	            
 	   
