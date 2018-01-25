@@ -40,12 +40,13 @@ public class ProjectResource
 
     private final ProjectRepository projectRepository;
     
-    @Autowired
+    //@Autowired
     private SimpleProducer simpleProducer;
 
     public ProjectResource(ProjectRepository projectRepository) 
     {
         this.projectRepository = projectRepository;
+        simpleProducer=new SimpleProducer();
     }
 
     /**
