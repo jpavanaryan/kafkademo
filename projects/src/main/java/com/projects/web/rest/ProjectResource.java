@@ -87,6 +87,7 @@ public class ProjectResource
             return createProject(project);
         }
         Project result = projectRepository.save(project);
+        simpleProducer.send(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, project.getId().toString()))
             .body(result);

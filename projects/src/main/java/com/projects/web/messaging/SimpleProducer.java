@@ -62,8 +62,8 @@ public class SimpleProducer
 	public void send(Project project)
 	{
 		 System.out.println("***************************************************************************************** Before Produce **********************************************************");
-         producer.send(new ProducerRecord<String, String>(topicName,"project", "Project with ID:  created"));
-         producer.close();  
+         producer.send(new ProducerRecord<String, String>(topicName,"project", "Project Created"));
+         //producer.close();  
 	}
 	
 }
