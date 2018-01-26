@@ -4,7 +4,6 @@ import com.codahale.metrics.annotation.Timed;
 import com.projects.domain.Project;
 
 import com.projects.repository.ProjectRepository;
-import com.projects.web.messaging.SimpleProducer;
 import com.projects.web.rest.errors.BadRequestAlertException;
 import com.projects.web.rest.util.HeaderUtil;
 import com.projects.web.rest.util.PaginationUtil;
@@ -40,13 +39,12 @@ public class ProjectResource
 
     private final ProjectRepository projectRepository;
     
-    @Autowired
-    private SimpleProducer simpleProducer;
+   
 
     public ProjectResource(ProjectRepository projectRepository) 
     {
         this.projectRepository = projectRepository;
-        simpleProducer=new SimpleProducer();
+       ;
     }
 
     /**
@@ -64,7 +62,7 @@ public class ProjectResource
             throw new BadRequestAlertException("A new project cannot already have an ID", ENTITY_NAME, "idexists");
         }
         Project result = projectRepository.save(project);
-        simpleProducer.send(result);
+        
         return ResponseEntity.created(new URI("/api/projects/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -87,7 +85,7 @@ public class ProjectResource
             return createProject(project);
         }
         Project result = projectRepository.save(project);
-        simpleProducer.send(result);
+        
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, project.getId().toString()))
             .body(result);
