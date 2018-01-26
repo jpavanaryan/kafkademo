@@ -5,7 +5,7 @@ import java.util.Properties;
 
 //import simple producer packages
 import org.apache.kafka.clients.producer.Producer;
-
+import org.apache.kafka.clients.producer.ProducerConfig;
 //import KafkaProducer packages
 import org.apache.kafka.clients.producer.KafkaProducer;
 
@@ -37,9 +37,11 @@ public class SimpleProducer
 	      //Set acknowledgements for producer requests.      
 	      props.put("acks", "all");
 	      
-	      props.put("request.timeout.ms", 30000);
-	      
-	     
+	      //props.put("request.timeout.ms", 3000000);
+	      props.put(ProducerConfig.ACKS_CONFIG, "all");
+	      //The maximum size of a request that the socket server will accept (protection against OOM)
+	      props.put("socket.request.max.bytes", 104857600);
+	    
 	      //If the request fails, the producer can automatically retry,
 	      props.put("retries", 3);
 	      
