@@ -8,4 +8,4 @@ services:
             - POSTGRES_USER=jhipster
             - POSTGRES_PASSWORD=
         ports:
-            - 8090:5432
+            - 8090:8090

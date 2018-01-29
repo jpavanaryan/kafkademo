@@ -343,6 +343,12 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-data</artifactId>
         </dependency>
+        <dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version><!--$NO-MVN-MAN-VER$-->
+			<scope>test</scope>
+		</dependency>
         <!-- jhipster-needle-maven-add-dependency -->
     </dependencies>
 

@@ -14,14 +14,20 @@ public class ProducerResource{
 
     private MessageChannel channel;
 
-    public ProducerResource(ProducerChannel channel) {
+    public ProducerResource(ProducerChannel channel) 
+   {
         this.channel = channel.messageChannel();
+        System.out.println("Inside ProducerResource constructor");
     }
 
     @GetMapping("/greetings/{count}")
     @Timed
-    public void produce(@PathVariable int count) {
-        while(count > 0) {
+    public void produce(@PathVariable int count) 
+	{
+	System.out.println("Inside produce method, greetings count received: "+count);
+        while(count > 0) 
+	{
+		System.out.println("Inside produce while method");
             channel.send(MessageBuilder.withPayload(new Greeting().setMessage("Hello world!: " + count)).build());
             count--;
         }
