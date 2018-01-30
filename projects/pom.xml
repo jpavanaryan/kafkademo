@@ -343,12 +343,6 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-data</artifactId>
         </dependency>
-        <dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>1.2.3</version><!--$NO-MVN-MAN-VER$-->
-			<scope>test</scope>
-		</dependency>
         <!-- jhipster-needle-maven-add-dependency -->
     </dependencies>
 
@@ -651,23 +645,6 @@
                                     <action>
                                         <ignore/>
                                     </action>
-                                </pluginExecution>
-                                <pluginExecution>
-                                	<pluginExecutionFilter>
-                                		<groupId>io.swagger</groupId>
-                                		<artifactId>
-                                			swagger-codegen-maven-plugin
-                                		</artifactId>
-                                		<versionRange>
-                                			[2.2.3,)
-                                		</versionRange>
-                                		<goals>
-                                			<goal>generate</goal>
-                                		</goals>
-                                	</pluginExecutionFilter>
-                                	<action>
-                                		<ignore></ignore>
-                                	</action>
                                 </pluginExecution>
                             </pluginExecutions>
                         </lifecycleMappingMetadata>

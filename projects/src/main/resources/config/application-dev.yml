@@ -45,7 +45,7 @@ spring:
                     zk-nodes: localhost
             bindings:
                 output:
-                    destination: topic-jhipster
+                    destination: project
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/projects?useUnicode=true&characterEncoding=utf8&useSSL=false

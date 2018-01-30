@@ -136,8 +136,8 @@ bcrypt-pbkdf@^1.0.0:
     tweetnacl "^0.14.3"
 
 binaryextensions@2:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/binaryextensions/-/binaryextensions-2.1.0.tgz#5e98d3dbdce974e5b1324b32f9458dda6197c8dc"
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/binaryextensions/-/binaryextensions-2.1.1.tgz#3209a51ca4a4ad541a3b8d3d6a6d5b83a2485935"
 
 boolbase@~1.0.0:
   version "1.0.0"

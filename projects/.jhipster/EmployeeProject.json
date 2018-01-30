@@ -15,7 +15,7 @@
         }
     ],
     "fields": [],
-    "changelogDate": "20180125154823",
+    "changelogDate": "20180129221835",
     "entityTableName": "employee_project",
     "dto": "no",
     "pagination": "no",
