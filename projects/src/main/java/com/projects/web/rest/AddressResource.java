@@ -48,6 +48,7 @@ public class AddressResource {
     public ResponseEntity<Address> createAddress(@Valid @RequestBody Address address) throws URISyntaxException {
         log.debug("REST request to save Address : {}", address);
         if (address.getId() != null) {
+     
             throw new BadRequestAlertException("A new address cannot already have an ID", ENTITY_NAME, "idexists");
         }
         Address result = addressRepository.save(address);

@@ -10,6 +10,8 @@ services:
             KAFKA_ADVERTISED_HOST_NAME: localhost
             KAFKA_ADVERTISED_PORT: 9092
             KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-            KAFKA_CREATE_TOPICS: "topic-jhipster:1:1"
+            KAFKA_CREATE_TOPICS: "project:1:1"
+            KAFKA_BROKER_ID: 999
+            KAFKA_GROUP_ID: group1
         ports:
             - 9092:9092

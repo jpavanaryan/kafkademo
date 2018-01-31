@@ -50,6 +50,8 @@ services:
         extends:
             file: kafka.yml
             service: kafka
+        environment:
+            KAFKA_ADVERTISED_HOST_NAME: kafka
     jhipster-registry:
         extends:
             file: jhipster-registry.yml

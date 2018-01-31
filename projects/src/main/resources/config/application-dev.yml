@@ -27,7 +27,7 @@ eureka:
             defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
 
 spring:
-    profiles:
+    profiles:   
         active: dev
         include: swagger
     devtools:
@@ -43,9 +43,24 @@ spring:
                 binder:
                     brokers: localhost
                     zk-nodes: localhost
+                    auto-add-partitions: true
+                    auto-create-topics: true
+                    min-partition-count: 2
             bindings:
-                output:
-                    destination: project
+               messageChannel:
+                  destination: project
+                  group: group1
+                  producer:
+                      partitionCount: 1
+                      partitioned: true     
+               subscribableChannel:
+                  destination: project
+                  group: group1
+                  consumer:
+                      partitionCount: 1
+                      partitioned: true
+                      startOffset: earliest
+
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/projects?useUnicode=true&characterEncoding=utf8&useSSL=false

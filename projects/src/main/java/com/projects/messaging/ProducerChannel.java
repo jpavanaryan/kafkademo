@@ -7,7 +7,7 @@ public interface ProducerChannel
 {
 
 	String CHANNEL = "messageChannel";
-
-	@Output
+	
+	@Output(ProducerChannel.CHANNEL)
 	MessageChannel messageChannel();
 }

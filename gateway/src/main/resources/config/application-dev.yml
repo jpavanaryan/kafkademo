@@ -43,9 +43,24 @@ spring:
                 binder:
                     brokers: localhost
                     zk-nodes: localhost
+                    auto-add-partitions: true
+                    auto-create-topics: true
+                    min-partition-count: 2
             bindings:
-                output:
-                    destination: topic-jhipster
+               messageChannel:
+                  destination: project
+                  group: group1
+                  producer:
+                      partitionCount: 1
+                      partitioned: true     
+               subscribableChannel:
+                  destination: project
+                  group: group1
+                  consumer:
+                      partitionCount: 1
+                      partitioned: true
+                      startOffset: earliest
+
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/gateway?useUnicode=true&characterEncoding=utf8&useSSL=false

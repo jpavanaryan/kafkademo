@@ -70,7 +70,7 @@ public class ProjectResource
 			throw new BadRequestAlertException("A new project cannot already have an ID", ENTITY_NAME, "idexists");
 		}
 		Project result = projectRepository.save(project);
-		//producerResource.pr
+		producerResource.produce(result);
 		return ResponseEntity.created(new URI("/api/projects/" + result.getId()))
 				.headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString())).body(result);
 	}
@@ -97,6 +97,7 @@ public class ProjectResource
 			return createProject(project);
 		}
 		Project result = projectRepository.save(project);
+		producerResource.produce(result);
 		return ResponseEntity.ok().headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, project.getId().toString()))
 				.body(result);
 	}
