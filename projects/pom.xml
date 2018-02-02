@@ -343,6 +343,23 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-data</artifactId>
         </dependency>
+        	<dependency>
+	    <groupId>org.apache.kafka</groupId>
+	    <artifactId>kafka_2.12</artifactId>
+	    <version>1.0.0</version>
+	</dependency>
+        <dependency>
+    <groupId>org.apache.kafka</groupId>
+    <artifactId>kafka-clients</artifactId>
+    <version>1.0.0</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.kafka</groupId>
+    <artifactId>kafka-streams</artifactId>
+    <version>1.0.0</version>
+</dependency>
+
         <!-- jhipster-needle-maven-add-dependency -->
     </dependencies>
 
@@ -645,6 +662,19 @@
                                     <action>
                                         <ignore/>
                                     </action>
+                                </pluginExecution>
+                                <pluginExecution>
+                                	<pluginExecutionFilter>
+                                		<groupId></groupId>
+                                		<artifactId></artifactId>
+                                		<versionRange>[,)</versionRange>
+                                		<goals>
+                                			<goal></goal>
+                                		</goals>
+                                	</pluginExecutionFilter>
+                                	<action>
+                                		<ignore></ignore>
+                                	</action>
                                 </pluginExecution>
                             </pluginExecutions>
                         </lifecycleMappingMetadata>

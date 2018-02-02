@@ -8,6 +8,6 @@ public interface ConsumerChannel
 
 	String CHANNEL = "subscribableChannel";
 
-	@Input(ConsumerChannel.CHANNEL)
+	@Input
 	SubscribableChannel subscribableChannel();
 }

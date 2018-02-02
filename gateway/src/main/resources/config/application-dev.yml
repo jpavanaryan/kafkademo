@@ -43,22 +43,16 @@ spring:
                 binder:
                     brokers: localhost
                     zk-nodes: localhost
-                    auto-add-partitions: true
-                    auto-create-topics: true
-                    min-partition-count: 2
             bindings:
                messageChannel:
                   destination: project
                   group: group1
                   producer:
-                      partitionCount: 1
-                      partitioned: true     
+                      sync: false 
                subscribableChannel:
                   destination: project
-                  group: group1
+                  group: group2
                   consumer:
-                      partitionCount: 1
-                      partitioned: true
                       startOffset: earliest
 
     datasource:

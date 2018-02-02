@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.projects.domain.Project;
 
 //@Service
-@EnableBinding(ConsumerChannel.class)
+@EnableBinding
 public class ConsumerService
 {
 
