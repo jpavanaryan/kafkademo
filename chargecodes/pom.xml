@@ -344,22 +344,7 @@
             <artifactId>spring-security-data</artifactId>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka -->
-	<dependency>
-	    <groupId>org.apache.kafka</groupId>
-	    <artifactId>kafka_2.12</artifactId>
-	    <version>1.0.0</version>
-	</dependency>
-        <dependency>
-    <groupId>org.apache.kafka</groupId>
-    <artifactId>kafka-clients</artifactId>
-    <version>1.0.0</version>
-</dependency>
 
-<dependency>
-    <groupId>org.apache.kafka</groupId>
-    <artifactId>kafka-streams</artifactId>
-    <version>1.0.0</version>
-</dependency>
         <!-- jhipster-needle-maven-add-dependency -->
     </dependencies>
 
@@ -947,4 +932,6 @@
             </dependencies>
         </profile>
     </profiles>
+    
+  
 </project>
