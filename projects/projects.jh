@@ -50,7 +50,6 @@ relationship OneToMany
 microservice * with projects
 
 
-
 paginate Employee with pagination
 paginate Project with pagination
 

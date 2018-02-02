@@ -3,7 +3,7 @@
     "promptValues": {
       "packageName": "com.projects"
     },
-    "jhipsterVersion": "4.13.3",
+    "jhipsterVersion": "4.14.0",
     "baseName": "projects",
     "packageName": "com.projects",
     "packageFolder": "com/projects",
@@ -20,7 +20,7 @@
     "buildTool": "maven",
     "enableSocialSignIn": false,
     "enableSwaggerCodegen": true,
-    "jwtSecretKey": "9cec8dcea1b95d6723b2000642edcdda90ad28ba",
+    "jwtSecretKey": "263db9db379f83bc0da6354f6e2a664b8abce018",
     "enableTranslation": false,
     "applicationType": "microservice",
     "testFrameworks": [],

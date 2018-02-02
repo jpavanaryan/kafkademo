@@ -38,7 +38,7 @@
             "fieldType": "Float"
         }
     ],
-    "changelogDate": "20180129221833",
+    "changelogDate": "20180202220838",
     "entityTableName": "employee",
     "dto": "no",
     "pagination": "pagination",

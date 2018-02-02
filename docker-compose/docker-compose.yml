@@ -52,6 +52,7 @@ services:
             service: kafka
         environment:
             KAFKA_ADVERTISED_HOST_NAME: kafka
+            KAFKA_BROKER_ID: 999
     jhipster-registry:
         extends:
             file: jhipster-registry.yml

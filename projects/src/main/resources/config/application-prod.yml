@@ -118,7 +118,7 @@ jhipster:
     security:
         authentication:
             jwt:
-                secret: 9cec8dcea1b95d6723b2000642edcdda90ad28ba
+                secret: 263db9db379f83bc0da6354f6e2a664b8abce018
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
                 token-validity-in-seconds-for-remember-me: 2592000
