@@ -27,7 +27,8 @@ public class ProducerResource
 		while (count > 0)
 		{
 			System.out.println("Inside produce method");
-			channel.send(MessageBuilder.withPayload(new Greeting().setMessage("Hello world!: " + count)).build());
+			Boolean flag=channel.send(MessageBuilder.withPayload(new Greeting().setMessage("Hello world!: " + count)).build());
+			System.out.println("Message sent successfully? "+flag);
 			count--;
 		}
 	}

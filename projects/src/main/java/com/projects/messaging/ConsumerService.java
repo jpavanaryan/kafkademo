@@ -14,7 +14,7 @@ public class ConsumerService
 	@StreamListener(ConsumerChannel.CHANNEL)
 	public void consume(Greeting greeting)
 	{
-		System.out.println("Inside produce method");
+		System.out.println("Inside consume method");
 		log.info("Received message: {}.", greeting.getMessage());
 	}
 }
