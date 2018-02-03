@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager } from 'ng-jhipster';
 
@@ -31,9 +32,10 @@ export class EmployeeProjectDetailComponent implements OnInit, OnDestroy {
     }
 
     load(id) {
-        this.employeeProjectService.find(id).subscribe((employeeProject) => {
-            this.employeeProject = employeeProject;
-        });
+        this.employeeProjectService.find(id)
+            .subscribe((employeeProjectResponse: HttpResponse<EmployeeProject>) => {
+                this.employeeProject = employeeProjectResponse.body;
+            });
     }
     previousState() {
         window.history.back();

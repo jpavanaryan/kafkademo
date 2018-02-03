@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { EmployeeProject } from './employee-project.model';
 import { EmployeeProjectService } from './employee-project.service';
-import { Principal, ResponseWrapper } from '../../shared';
+import { Principal } from '../../shared';
 
 @Component({
     selector: 'jhi-employee-project',
@@ -25,10 +26,10 @@ employeeProjects: EmployeeProject[];
 
     loadAll() {
         this.employeeProjectService.query().subscribe(
-            (res: ResponseWrapper) => {
-                this.employeeProjects = res.json;
+            (res: HttpResponse<EmployeeProject[]>) => {
+                this.employeeProjects = res.body;
             },
-            (res: ResponseWrapper) => this.onError(res.json)
+            (res: HttpErrorResponse) => this.onError(res.message)
         );
     }
     ngOnInit() {

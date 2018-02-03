@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { Department } from './department.model';
 import { DepartmentService } from './department.service';
-import { Principal, ResponseWrapper } from '../../shared';
+import { Principal } from '../../shared';
 
 @Component({
     selector: 'jhi-department',
@@ -25,10 +26,10 @@ departments: Department[];
 
     loadAll() {
         this.departmentService.query().subscribe(
-            (res: ResponseWrapper) => {
-                this.departments = res.json;
+            (res: HttpResponse<Department[]>) => {
+                this.departments = res.body;
             },
-            (res: ResponseWrapper) => this.onError(res.json)
+            (res: HttpErrorResponse) => this.onError(res.message)
         );
     }
     ngOnInit() {
