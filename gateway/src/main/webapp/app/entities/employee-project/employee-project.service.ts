@@ -1,66 +1,67 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { SERVER_API_URL } from '../../app.constants';
 
 import { EmployeeProject } from './employee-project.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import { createRequestOption } from '../../shared';
+
+export type EntityResponseType = HttpResponse<EmployeeProject>;
 
 @Injectable()
 export class EmployeeProjectService {
 
-    private resourceUrl =  SERVER_API_URL + '/projects/api/employee-projects';
+    private resourceUrl =  SERVER_API_URL + 'projects/api/employee-projects';
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
 
-    create(employeeProject: EmployeeProject): Observable<EmployeeProject> {
+    create(employeeProject: EmployeeProject): Observable<EntityResponseType> {
         const copy = this.convert(employeeProject);
-        return this.http.post(this.resourceUrl, copy).map((res: Response) => {
-            const jsonResponse = res.json();
-            return this.convertItemFromServer(jsonResponse);
-        });
+        return this.http.post<EmployeeProject>(this.resourceUrl, copy, { observe: 'response' })
+            .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
-    update(employeeProject: EmployeeProject): Observable<EmployeeProject> {
+    update(employeeProject: EmployeeProject): Observable<EntityResponseType> {
         const copy = this.convert(employeeProject);
-        return this.http.put(this.resourceUrl, copy).map((res: Response) => {
-            const jsonResponse = res.json();
-            return this.convertItemFromServer(jsonResponse);
-        });
+        return this.http.put<EmployeeProject>(this.resourceUrl, copy, { observe: 'response' })
+            .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
-    find(id: number): Observable<EmployeeProject> {
-        return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
-            const jsonResponse = res.json();
-            return this.convertItemFromServer(jsonResponse);
-        });
+    find(id: number): Observable<EntityResponseType> {
+        return this.http.get<EmployeeProject>(`${this.resourceUrl}/${id}`, { observe: 'response'})
+            .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
-    query(req?: any): Observable<ResponseWrapper> {
+    query(req?: any): Observable<HttpResponse<EmployeeProject[]>> {
         const options = createRequestOption(req);
-        return this.http.get(this.resourceUrl, options)
-            .map((res: Response) => this.convertResponse(res));
+        return this.http.get<EmployeeProject[]>(this.resourceUrl, { params: options, observe: 'response' })
+            .map((res: HttpResponse<EmployeeProject[]>) => this.convertArrayResponse(res));
     }
 
-    delete(id: number): Observable<Response> {
-        return this.http.delete(`${this.resourceUrl}/${id}`);
+    delete(id: number): Observable<HttpResponse<any>> {
+        return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});
     }
 
-    private convertResponse(res: Response): ResponseWrapper {
-        const jsonResponse = res.json();
-        const result = [];
+    private convertResponse(res: EntityResponseType): EntityResponseType {
+        const body: EmployeeProject = this.convertItemFromServer(res.body);
+        return res.clone({body});
+    }
+
+    private convertArrayResponse(res: HttpResponse<EmployeeProject[]>): HttpResponse<EmployeeProject[]> {
+        const jsonResponse: EmployeeProject[] = res.body;
+        const body: EmployeeProject[] = [];
         for (let i = 0; i < jsonResponse.length; i++) {
-            result.push(this.convertItemFromServer(jsonResponse[i]));
+            body.push(this.convertItemFromServer(jsonResponse[i]));
         }
-        return new ResponseWrapper(res.headers, result, res.status);
+        return res.clone({body});
     }
 
     /**
      * Convert a returned JSON object to EmployeeProject.
      */
-    private convertItemFromServer(json: any): EmployeeProject {
-        const entity: EmployeeProject = Object.assign(new EmployeeProject(), json);
-        return entity;
+    private convertItemFromServer(employeeProject: EmployeeProject): EmployeeProject {
+        const copy: EmployeeProject = Object.assign({}, employeeProject);
+        return copy;
     }
 
     /**

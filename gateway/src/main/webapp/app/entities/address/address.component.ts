@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { Address } from './address.model';
 import { AddressService } from './address.service';
-import { Principal, ResponseWrapper } from '../../shared';
+import { Principal } from '../../shared';
 
 @Component({
     selector: 'jhi-address',
@@ -25,10 +26,10 @@ addresses: Address[];
 
     loadAll() {
         this.addressService.query().subscribe(
-            (res: ResponseWrapper) => {
-                this.addresses = res.json;
+            (res: HttpResponse<Address[]>) => {
+                this.addresses = res.body;
             },
-            (res: ResponseWrapper) => this.onError(res.json)
+            (res: HttpErrorResponse) => this.onError(res.message)
         );
     }
     ngOnInit() {

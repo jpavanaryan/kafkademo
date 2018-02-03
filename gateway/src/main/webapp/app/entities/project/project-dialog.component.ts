@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Response } from '@angular/http';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -10,7 +10,6 @@ import { Project } from './project.model';
 import { ProjectPopupService } from './project-popup.service';
 import { ProjectService } from './project.service';
 import { Department, DepartmentService } from '../department';
-import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-project-dialog',
@@ -35,7 +34,7 @@ export class ProjectDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.departmentService.query()
-            .subscribe((res: ResponseWrapper) => { this.departments = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+            .subscribe((res: HttpResponse<Department[]>) => { this.departments = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -53,9 +52,9 @@ export class ProjectDialogComponent implements OnInit {
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<Project>) {
-        result.subscribe((res: Project) =>
-            this.onSaveSuccess(res), (res: Response) => this.onSaveError());
+    private subscribeToSaveResponse(result: Observable<HttpResponse<Project>>) {
+        result.subscribe((res: HttpResponse<Project>) =>
+            this.onSaveSuccess(res.body), (res: HttpErrorResponse) => this.onSaveError());
     }
 
     private onSaveSuccess(result: Project) {

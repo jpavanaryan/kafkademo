@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Response } from '@angular/http';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -11,7 +11,6 @@ import { EmployeeProjectPopupService } from './employee-project-popup.service';
 import { EmployeeProjectService } from './employee-project.service';
 import { Employee, EmployeeService } from '../employee';
 import { Project, ProjectService } from '../project';
-import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-employee-project-dialog',
@@ -39,9 +38,9 @@ export class EmployeeProjectDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.employeeService.query()
-            .subscribe((res: ResponseWrapper) => { this.employees = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+            .subscribe((res: HttpResponse<Employee[]>) => { this.employees = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.projectService.query()
-            .subscribe((res: ResponseWrapper) => { this.projects = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+            .subscribe((res: HttpResponse<Project[]>) => { this.projects = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -59,9 +58,9 @@ export class EmployeeProjectDialogComponent implements OnInit {
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<EmployeeProject>) {
-        result.subscribe((res: EmployeeProject) =>
-            this.onSaveSuccess(res), (res: Response) => this.onSaveError());
+    private subscribeToSaveResponse(result: Observable<HttpResponse<EmployeeProject>>) {
+        result.subscribe((res: HttpResponse<EmployeeProject>) =>
+            this.onSaveSuccess(res.body), (res: HttpErrorResponse) => this.onSaveError());
     }
 
     private onSaveSuccess(result: EmployeeProject) {
