@@ -36,7 +36,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20180125154828",
+    "changelogDate": "20180203074640",
     "entityTableName": "address",
     "dto": "no",
     "pagination": "no",
