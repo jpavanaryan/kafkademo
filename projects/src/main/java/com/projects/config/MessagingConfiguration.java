@@ -16,5 +16,9 @@ import com.projects.messaging.ProducerChannel;
 @EnableBinding(value ={ Source.class, ProducerChannel.class, ConsumerChannel.class })
 public class MessagingConfiguration
 {
-
+   public MessagingConfiguration()
+   {
+	   System.out.println("**************************************   Inside MessagingConfiguration Constructor  **************************************  ");
+   }
+	
 }
