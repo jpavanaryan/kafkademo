@@ -6,7 +6,7 @@
     <!--
         Added the constraints for entity ChargeCodeProject.
     -->
-    <changeSet id="20180201174830-2" author="jhipster">
+    <changeSet id="20180203184925-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="chargecode_id"
                                  baseTableName="charge_code_project"

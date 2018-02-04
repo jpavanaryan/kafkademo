@@ -20,7 +20,6 @@ services:
             service: kafka
         environment:
             - KAFKA_ADVERTISED_HOST_NAME=kafka
-            - KAFKA_BROKER_ID=999
     zookeeper:
         extends:
             file: kafka.yml

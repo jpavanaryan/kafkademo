@@ -13,6 +13,8 @@ import com.chargecodes.messaging.ProducerChannel;
  * for more information.
  */
 @EnableBinding(value = {Source.class, ProducerChannel.class, ConsumerChannel.class})
-public class MessagingConfiguration {
+//@EnableBinding(value = {Source.class})
+public class MessagingConfiguration 
+{
 
 }

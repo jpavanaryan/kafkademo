@@ -1,4 +1,4 @@
-package com.chargecodes.messaging;
+package com.gateway.messaging;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,7 +6,7 @@ import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 @EnableBinding(ConsumerChannel.class)
 public class ConsumerService
 {
@@ -16,7 +16,7 @@ public class ConsumerService
 	@StreamListener(ConsumerChannel.CHANNEL)
 	public void consume(Greeting greeting)
 	{
-		log.info("***************************  Inside consume method ***************************");
+		System.out.println("Inside consume method");
 		log.info("Received message: {}.", greeting.getMessage());
 	}
 }

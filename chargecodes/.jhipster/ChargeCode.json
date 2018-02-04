@@ -32,7 +32,7 @@
             "fieldType": "LocalDate"
         }
     ],
-    "changelogDate": "20180201174828",
+    "changelogDate": "20180203184923",
     "entityTableName": "charge_code",
     "dto": "no",
     "pagination": "pagination",
