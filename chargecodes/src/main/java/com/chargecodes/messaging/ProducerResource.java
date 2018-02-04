@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.codahale.metrics.annotation.Timed;
 
 @RestController
-@EnableBinding(MessageChannel.class)
 public class ProducerResource
 {
 
@@ -37,11 +35,9 @@ public class ProducerResource
 		{
 			System.out.println("***************************  Message Sequence Number: "+count+"  ************************************** ");
 			channel.send(MessageBuilder.withPayload(new Greeting().setMessage("Message Sequence Number: " + count)).build());
-			//new SimpleProducer().produce();
 			count--;
 		}
-		
-		//new SimpleConsumer().consume();
+
 	}
 
 }
