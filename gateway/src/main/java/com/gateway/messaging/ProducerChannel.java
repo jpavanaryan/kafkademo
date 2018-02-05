@@ -8,6 +8,6 @@ public interface ProducerChannel
 
 	String CHANNEL = "messageChannel";
 
-	@Output
+	@Output("customChannel")
 	MessageChannel messageChannel();
 }

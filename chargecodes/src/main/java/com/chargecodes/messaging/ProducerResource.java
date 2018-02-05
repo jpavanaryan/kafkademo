@@ -15,7 +15,6 @@ import com.codahale.metrics.annotation.Timed;
 @RestController
 public class ProducerResource
 {
-
 	private MessageChannel channel;
 
 	private final Logger log = LoggerFactory.getLogger(ProducerResource.class);

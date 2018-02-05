@@ -43,18 +43,17 @@ spring:
                 binder:
                     brokers: localhost
                     zk-nodes: localhost
-                    defaultBrokerPort: 9092
-                    defaultZkPort: 2181
+                    autoCreateTopics: false
             bindings:
-               messageChannel:
-                  destination: greetings
+               customChannel:
+                  destination: project
                   content-type: application/json
-                  producer:
-                     sync: true
+                  group: project_group
                subscribableChannel:
-                  destination: greetings
-                  consumer:
-                     startOffset: earliest
+                  destination: project
+                  content-type: application/json
+                  group: project_group
+
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/projects?useUnicode=true&characterEncoding=utf8&useSSL=false

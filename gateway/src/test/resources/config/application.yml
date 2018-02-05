@@ -33,9 +33,16 @@ spring:
                 binder:
                     brokers: localhost
                     zk-nodes: localhost
+                    autoCreateTopics: false
             bindings:
-                output:
-                    destination: topic-jhipster
+               customChannel:
+                  destination: project
+                  content-type: application/json
+                  group: project_group
+               subscribableChannel:
+                  destination: project
+                  content-type: application/json
+                  group: project_group
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:h2:mem:gateway;DB_CLOSE_DELAY=-1
@@ -103,7 +110,7 @@ jhipster:
     security:
         authentication:
             jwt:
-                secret: d18d98d52173091029166c1ed4ff29e4f2e70464
+                secret: 75d52d029a9d211d004a68427b71fab4a8a5e35c
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
