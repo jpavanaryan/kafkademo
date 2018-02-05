@@ -1,6 +1,6 @@
 # Spring Cloud Stream with Kafka on Docker 
 
-#### This repository demonstrates Kafka message broker (send/receive messages) functionality using Spring Cloud Stream on Docker containers. Objects are sent and received between microservices with Kafka
+This repository demonstrates Kafka message broker (send/receive messages) functionality using Spring Cloud Stream on Docker containers. Objects are sent and received between microservices with Kafka
 
 1. The application contains two microservices named `Projects` and `ChargeCodes` with a gateway named `gateway`. 
 2. To simplify development and deployment in docker, [docker-compose](http://www.jhipster.tech/docker-compose/) setup process was used.
