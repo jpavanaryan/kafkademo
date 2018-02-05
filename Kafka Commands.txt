@@ -1,0 +1,14 @@
+bin/kafka-topics.sh --list --zookeeper 172.19.0.8:2181
+
+bin/kafka-topics.sh --describe --zookeeper 172.19.0.8:2181 --topic customChannel
+
+bin/kafka-topics.sh --zookeeper 172.19.0.8:2181 --delete --topic customChannel
+
+bin/kafka-topics.sh --create --zookeeper 172.19.0.8:2181 --replication-factor 1 --partitions 1 --topic greetings
+
+
+
+bin/kafka-console-producer.sh --broker-list 172.19.0.4:9092 --topic subscribableChannel
+
+bin/kafka-console-consumer.sh --bootstrap-server 172.19.0.4:9092 --topic customChannel --from-beginning
+
