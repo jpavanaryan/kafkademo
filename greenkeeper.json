@@ -1,0 +1,12 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "chargecodes/package.json",
+        "gateway/package.json",
+        "jhipster-kafka/package.json",
+        "projects/package.json"
+      ]
+    }
+  }
+}
